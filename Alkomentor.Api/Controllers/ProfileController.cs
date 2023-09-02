@@ -1,5 +1,6 @@
 using Alkomentor.Application;
 using Alkomentor.Contract.Dto;
+using Alkomentor.Contract.Requests;
 using Alkomentor.Domain;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,7 +28,7 @@ public class ProfileController : ControllerBase
     }
 
     [HttpPost("editProfile")]
-    public ActionResult EditProfile(string name, int weight, bool gender)
+    public ActionResult EditProfile([FromBody]EditProfileRequest request)
     {
         return Ok();
     }

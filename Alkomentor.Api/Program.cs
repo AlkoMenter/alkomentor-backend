@@ -1,3 +1,4 @@
+using Alkomentor.Api;
 using Alkomentor.Application;
 using Alkomentor.Infrastructure;
 
@@ -6,7 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddInfrastructure(builder.Configuration)
                 .AddApplication();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(opts =>
+{
+    opts.Filters.Add(typeof(ModelStateFilter));
+});
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();

@@ -1,4 +1,5 @@
-﻿using Alkomentor.Domain;
+﻿using Alkomentor.Contract.Requests;
+using Alkomentor.Domain;
 using Alkomentor.Infrastructure;
 
 namespace Alkomentor.Application;
@@ -18,5 +19,10 @@ internal class ProfileService : IProfileService
     public async Task<Profile?> GetProfile(Guid userId)
     {
         return await _profileRepository.GetProfile(userId);
+    }
+
+    public Task EditProfile(EditProfileRequest request)
+    {
+        throw new NotImplementedException();
     }
 }
