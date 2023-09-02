@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace Alkomentor.Api;
+namespace Alkomentor.Api.Utils;
 
 public class ModelStateFeature
 {

@@ -1,8 +1,8 @@
-﻿
+﻿using Alkomentor.Application.ServiceInterfaces;
 using Alkomentor.Domain;
-using Alkomentor.Infrastructure;
+using Alkomentor.Infrastructure.RepositoryInterfaces;
 
-namespace Alkomentor.Application;
+namespace Alkomentor.Application.Services;
 
 internal class AccountService : IAccountService
 {

@@ -1,9 +1,9 @@
 ﻿using Alkomentor.Contract.Requests;
 using Alkomentor.Domain;
-using Microsoft.AspNetCore.Http;
+using Alkomentor.Infrastructure.RepositoryInterfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Alkomentor.Infrastructure;
+namespace Alkomentor.Infrastructure.Repositories;
 
 internal class ProfileRepository : IProfileRepository
 {

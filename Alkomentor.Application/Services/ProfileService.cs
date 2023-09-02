@@ -1,8 +1,9 @@
-﻿using Alkomentor.Contract.Requests;
+﻿using Alkomentor.Application.ServiceInterfaces;
+using Alkomentor.Contract.Requests;
 using Alkomentor.Domain;
-using Alkomentor.Infrastructure;
+using Alkomentor.Infrastructure.RepositoryInterfaces;
 
-namespace Alkomentor.Application;
+namespace Alkomentor.Application.Services;
 
 internal class ProfileService : IProfileService
 {

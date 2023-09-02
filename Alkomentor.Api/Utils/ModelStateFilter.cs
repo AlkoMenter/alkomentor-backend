@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Alkomentor.Api;
+namespace Alkomentor.Api.Utils;
 
 public class ModelStateFilter : IAsyncActionFilter
 {

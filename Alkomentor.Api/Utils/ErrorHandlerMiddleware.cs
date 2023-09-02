@@ -2,7 +2,7 @@ using System.Net;
 using System.Text.Json;
 using Alkomentor.Api.Exceptions;
 
-namespace Alkomentor.Api;
+namespace Alkomentor.Api.Utils;
 
 public class ErrorHandlerMiddleware
 {

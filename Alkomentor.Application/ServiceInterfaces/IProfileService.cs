@@ -1,7 +1,7 @@
 ﻿using Alkomentor.Contract.Requests;
 using Alkomentor.Domain;
 
-namespace Alkomentor.Application;
+namespace Alkomentor.Application.ServiceInterfaces;
 
 public interface IProfileService
 {

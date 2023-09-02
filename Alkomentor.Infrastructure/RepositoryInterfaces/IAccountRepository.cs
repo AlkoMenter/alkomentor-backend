@@ -1,6 +1,6 @@
 ﻿using Alkomentor.Domain;
 
-namespace Alkomentor.Infrastructure;
+namespace Alkomentor.Infrastructure.RepositoryInterfaces;
 
 public interface IAccountRepository
 {

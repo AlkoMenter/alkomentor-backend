@@ -12,5 +12,9 @@ public class Booze
 
     public Stage? Stage { get; set; }
 
+    public double CurrentProMille { get; set; }
+
     public ICollection<Gulp>? Gulps { get; set; }
+
+    public ICollection<Drink>? SelectedDrinks { get; set; }
 }

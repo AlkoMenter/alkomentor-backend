@@ -1,6 +1,6 @@
 ﻿using Alkomentor.Domain;
 
-namespace Alkomentor.Application;
+namespace Alkomentor.Application.ServiceInterfaces;
 
 public interface IAccountService
 {

@@ -1,4 +1,6 @@
 ﻿using Alkomentor.Infrastructure.Options;
+using Alkomentor.Infrastructure.Repositories;
+using Alkomentor.Infrastructure.RepositoryInterfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,5 +23,8 @@ public static class DependencyInjection
 
     private static IServiceCollection AddRepositories(this IServiceCollection services)
         => services.AddTransient<IAccountRepository, AccountRepository>()
-                    .AddTransient<IProfileRepository, ProfileRepository>();
+                    .AddTransient<IProfileRepository, ProfileRepository>()
+                    .AddTransient<IBoozeRepository, BoozeRepository>()
+                    .AddTransient<IDrinkRepository, DrinkRepository>()
+                    .AddTransient<IStageRepository, StageRepository>();
 }

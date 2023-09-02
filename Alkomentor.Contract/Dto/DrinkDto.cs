@@ -1,6 +1,6 @@
-﻿namespace Alkomentor.Domain.Booze;
+﻿namespace Alkomentor.Contract.Dto;
 
-public class Drink
+public class DrinkDto
 {
     public Guid Id { get; set; }
 
@@ -9,6 +9,4 @@ public class Drink
     public double AlcoholPerGram { get; set; }
 
     public double? Degree { get; set; }
-
-    public ICollection<Booze>? Boozes { get; set; }
 }

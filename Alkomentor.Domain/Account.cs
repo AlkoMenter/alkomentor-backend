@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace Alkomentor.Domain;
+﻿namespace Alkomentor.Domain;
 
 public class Account
 {

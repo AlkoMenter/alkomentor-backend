@@ -1,8 +1,8 @@
-﻿
-using Alkomentor.Domain;
+﻿using Alkomentor.Domain;
+using Alkomentor.Infrastructure.RepositoryInterfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Alkomentor.Infrastructure;
+namespace Alkomentor.Infrastructure.Repositories;
 
 internal class AccountRepository : IAccountRepository
 {

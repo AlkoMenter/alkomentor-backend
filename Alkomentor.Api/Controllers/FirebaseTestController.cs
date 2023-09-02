@@ -1,4 +1,4 @@
-using Alkomentor.Application;
+using Alkomentor.Application.ServiceInterfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Alkomentor.Api.Controllers;

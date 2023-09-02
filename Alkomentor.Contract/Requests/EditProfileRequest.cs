@@ -8,7 +8,7 @@ public class EditProfileRequest
     public Guid AccountId { get; set; }
     
     [Required]
-    public string Name { get; set; }
+    public required string Name { get; set; }
     
     [Range(18, 150)]
     public int Age { get; set; }

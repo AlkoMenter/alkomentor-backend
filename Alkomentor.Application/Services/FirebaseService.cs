@@ -1,8 +1,9 @@
+using Alkomentor.Application.ServiceInterfaces;
 using FirebaseAdmin;
 using FirebaseAdmin.Messaging;
 using Google.Apis.Auth.OAuth2;
 
-namespace Alkomentor.Application;
+namespace Alkomentor.Application.Services;
 
 public class FirebaseService : IFirebaseService
 {

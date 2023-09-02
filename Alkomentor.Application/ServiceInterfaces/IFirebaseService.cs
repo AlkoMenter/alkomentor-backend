@@ -1,4 +1,4 @@
-namespace Alkomentor.Application;
+namespace Alkomentor.Application.ServiceInterfaces;
 
 public interface IFirebaseService
 {

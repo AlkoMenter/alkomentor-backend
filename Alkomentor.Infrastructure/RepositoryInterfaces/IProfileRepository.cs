@@ -1,7 +1,7 @@
 ﻿using Alkomentor.Contract.Requests;
 using Alkomentor.Domain;
 
-namespace Alkomentor.Infrastructure;
+namespace Alkomentor.Infrastructure.RepositoryInterfaces;
 
 public interface IProfileRepository
 {
