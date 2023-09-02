@@ -1,4 +1,5 @@
 using Alkomentor.Application;
+using Alkomentor.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Alkomentor.Api.Controllers;
@@ -17,11 +18,13 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<bool>> Login(string login, string password)
+    public async Task<ActionResult<AccountDto>> Login(string login, string password)
     {
-        var isAccountCreated = await _accountService.CheckAuthorization(login, password);
+        var account = await _accountService.CheckAuthorization(login, password);
+        
+        if (account is null) return Unauthorized();
 
-        return isAccountCreated ? Ok() : Unauthorized();
+        return Ok(Mapper.Map<Account, AccountDto>(account));
     }
     
     [HttpPost("registration")]

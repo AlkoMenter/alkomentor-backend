@@ -13,12 +13,8 @@ internal class AccountService : IAccountService
         _accountRepository = accountRepository;
     }
 
-    public async Task<bool> CheckAuthorization(string login, string password)
-    {
-        var account = await _accountRepository.GetAccount(null, login, password);
-
-        return account is not null;
-    }
+    public async Task<Account?> CheckAuthorization(string login, string password)
+        =>  await _accountRepository.GetAccount(null, login, password);
 
     public async Task<Account> RegisterAccount(string login, string password)
         => await _accountRepository.CreateAccount(login, password);
