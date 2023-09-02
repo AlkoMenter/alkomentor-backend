@@ -1,5 +1,6 @@
 using Alkomentor.Application;
 using Alkomentor.Contract.Dto;
+using Alkomentor.Contract.Requests;
 using Alkomentor.Domain;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,9 +20,9 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<AccountDto>> Login(string login, string password)
+    public async Task<ActionResult<AccountDto>> Login([FromBody]LoginRequest request)
     {
-        var account = await _accountService.CheckAuthorization(login, password);
+        var account = await _accountService.CheckAuthorization(request.Login, request.Password);
         
         if (account is null) return Unauthorized();
 
@@ -29,11 +30,11 @@ public class AuthController : ControllerBase
     }
     
     [HttpPost("registration")]
-    public async Task<IActionResult> Registration(string login, string password, string? name, int? age, double? weight, bool? gender)
+    public async Task<IActionResult> Registration([FromBody]RegistrationRequest request)
     {
-        var account = await _accountService.RegisterAccount(login, password);
+        var account = await _accountService.RegisterAccount(request.Login, request.Password);
 
-        var profile = await _profileService.CreateProfile(name, age,  weight, gender, account);
+        var profile = await _profileService.CreateProfile(request.Name, request.Age, request.Weight, request.Gender, account);
 
         return Ok();
     }
