@@ -1,4 +1,4 @@
-using Alkomentor.Api.Contracts.Dto;
+using Alkomentor.Contract.Dto;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Alkomentor.Api.Controllers;

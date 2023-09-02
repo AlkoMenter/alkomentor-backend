@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Alkomentor.Infrastructure\Alkomentor.Infrastructure.csproj" />
     <ProjectReference Include="..\Alkomentor.Application\Alkomentor.Application.csproj" />
+    <ProjectReference Include="..\Alkomentor.Contract\Alkomentor.Contract.csproj" />
   </ItemGroup>
 
   <ItemGroup>
