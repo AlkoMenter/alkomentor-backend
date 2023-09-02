@@ -1,4 +1,5 @@
 ﻿using Alkomentor.Domain;
+using Alkomentor.Domain.Booze;
 using Alkomentor.Infrastructure.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -13,7 +14,7 @@ public class PostgresDbContext: DbContext
 
     public DbSet<Booze> Boozes { get; set; }
 
-    public DbSet<BoozeDrink> BoozeDrinks { get; set; }
+    public DbSet<Gulp> Gulps { get; set; }
 
     public DbSet<Drink> Drinks { get; set; }
 

@@ -1,4 +1,4 @@
-﻿namespace Alkomentor.Domain;
+﻿namespace Alkomentor.Domain.Booze;
 
 public class Stage
 {
