@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alkomentor.Api", "Alkomentor.Api\Alkomentor.Api.csproj", "{41EE6B6D-9510-4547-A160-94B95E190D74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alkomentor.Domain", "Alkomentor.Domain\Alkomentor.Domain.csproj", "{E0334571-1C58-4BDB-9A77-BA6DD29F9038}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alkomentor.Infrastructure", "Alkomentor.Infrastructure\Alkomentor.Infrastructure.csproj", "{A6FA1B92-23D9-4490-B0C1-CDC36095B3BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{41EE6B6D-9510-4547-A160-94B95E190D74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41EE6B6D-9510-4547-A160-94B95E190D74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41EE6B6D-9510-4547-A160-94B95E190D74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0334571-1C58-4BDB-9A77-BA6DD29F9038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0334571-1C58-4BDB-9A77-BA6DD29F9038}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0334571-1C58-4BDB-9A77-BA6DD29F9038}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0334571-1C58-4BDB-9A77-BA6DD29F9038}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6FA1B92-23D9-4490-B0C1-CDC36095B3BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6FA1B92-23D9-4490-B0C1-CDC36095B3BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6FA1B92-23D9-4490-B0C1-CDC36095B3BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6FA1B92-23D9-4490-B0C1-CDC36095B3BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
