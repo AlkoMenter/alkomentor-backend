@@ -28,8 +28,10 @@ public class ProfileController : ControllerBase
     }
 
     [HttpPost("editProfile")]
-    public ActionResult EditProfile([FromBody]EditProfileRequest request)
+    public async Task<ActionResult> EditProfile([FromBody]EditProfileRequest request)
     {
+        await _profileService.EditProfile(request);
+
         return Ok();
     }
 }

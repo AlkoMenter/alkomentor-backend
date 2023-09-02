@@ -20,21 +20,22 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<AccountDto>> Login([FromBody]LoginRequest request)
+    public async Task<ActionResult<AccountDto>> Login([FromBody] LoginRequest request)
     {
         var account = await _accountService.CheckAuthorization(request.Login, request.Password);
-        
+
         if (account is null) return Unauthorized();
 
         return Ok(Mapper.Map<Account, AccountDto>(account));
     }
-    
+
     [HttpPost("registration")]
-    public async Task<IActionResult> Registration([FromBody]RegistrationRequest request)
+    public async Task<IActionResult> Registration([FromBody] RegistrationRequest request)
     {
         var account = await _accountService.RegisterAccount(request.Login, request.Password);
 
-        var profile = await _profileService.CreateProfile(request.Name, request.Age, request.Weight, request.Gender, account);
+        var profile =
+            await _profileService.CreateProfile(request.Name, request.Age, request.Weight, request.Gender, account);
 
         return Ok();
     }

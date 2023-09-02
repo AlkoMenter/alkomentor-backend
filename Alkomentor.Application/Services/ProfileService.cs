@@ -21,8 +21,8 @@ internal class ProfileService : IProfileService
         return await _profileRepository.GetProfile(userId);
     }
 
-    public Task EditProfile(EditProfileRequest request)
+    public async Task EditProfile(EditProfileRequest request)
     {
-        throw new NotImplementedException();
+        await _profileRepository.EditProfile(request);
     }
 }
