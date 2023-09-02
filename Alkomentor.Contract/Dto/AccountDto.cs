@@ -1,4 +1,4 @@
-﻿namespace Alkomentor.Api;
+﻿namespace Alkomentor.Contract.Dto;
 
 public class AccountDto
 {

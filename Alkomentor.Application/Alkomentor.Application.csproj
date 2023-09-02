@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <ProjectReference Include="..\Alkomentor.Contract\Alkomentor.Contract.csproj" />
     <ProjectReference Include="..\Alkomentor.Domain\Alkomentor.Domain.csproj" />
     <ProjectReference Include="..\Alkomentor.Infrastructure\Alkomentor.Infrastructure.csproj" />
   </ItemGroup>

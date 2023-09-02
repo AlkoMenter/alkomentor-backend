@@ -1,4 +1,5 @@
 ﻿using Alkomentor.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Alkomentor.Infrastructure;
 
@@ -28,5 +29,12 @@ internal class ProfileRepository : IProfileRepository
         await _context.SaveChangesAsync();
 
         return profile.Entity;
+    }
+
+    public async Task<Profile?> GetProfile(Guid userId)
+    {
+        var user = await _context.Profiles.FirstOrDefaultAsync(x => x.Id == userId);
+
+        return user;
     }
 }
