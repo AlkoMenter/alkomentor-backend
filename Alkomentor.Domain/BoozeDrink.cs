@@ -12,5 +12,5 @@ public class BoozeDrink
 
     public DateTime PlanTime { get; set; }
 
-    public DateTime FactTime { get; set; }
+    public DateTime? FactTime { get; set; }
 }
