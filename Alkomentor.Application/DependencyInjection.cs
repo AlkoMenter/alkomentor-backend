@@ -8,5 +8,6 @@ public static class DependencyInjection
 
     private static IServiceCollection AddServices(this IServiceCollection services)
         => services.AddTransient<IAccountService, AccountService>()
-                    .AddTransient<IProfileService, ProfileService>();
+                    .AddTransient<IProfileService, ProfileService>()
+                    .AddSingleton<IFirebaseService, FirebaseService>();
 }
