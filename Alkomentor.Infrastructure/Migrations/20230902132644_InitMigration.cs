@@ -59,9 +59,9 @@ namespace Alkomentor.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: true),
-                    Age = table.Column<int>(type: "integer", nullable: false),
-                    Weight = table.Column<double>(type: "double precision", nullable: false),
-                    Gender = table.Column<int>(type: "integer", nullable: false),
+                    Age = table.Column<int>(type: "integer", nullable: true),
+                    Weight = table.Column<double>(type: "double precision", nullable: true),
+                    Gender = table.Column<bool>(type: "boolean", nullable: true),
                     AccountId = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
@@ -81,11 +81,17 @@ namespace Alkomentor.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     StartTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     StopTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    ProfileId = table.Column<Guid>(type: "uuid", nullable: true),
                     StageId = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Boozes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Boozes_Profiles_ProfileId",
+                        column: x => x.ProfileId,
+                        principalTable: "Profiles",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Boozes_Stages_StageId",
                         column: x => x.StageId,
@@ -102,7 +108,7 @@ namespace Alkomentor.Infrastructure.Migrations
                     BoozeId = table.Column<Guid>(type: "uuid", nullable: true),
                     Size = table.Column<double>(type: "double precision", nullable: false),
                     PlanTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    FactTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    FactTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -130,6 +136,11 @@ namespace Alkomentor.Infrastructure.Migrations
                 column: "DrinkId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Boozes_ProfileId",
+                table: "Boozes",
+                column: "ProfileId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Boozes_StageId",
                 table: "Boozes",
                 column: "StageId");
@@ -147,19 +158,19 @@ namespace Alkomentor.Infrastructure.Migrations
                 name: "BoozeDrinks");
 
             migrationBuilder.DropTable(
-                name: "Profiles");
-
-            migrationBuilder.DropTable(
                 name: "Boozes");
 
             migrationBuilder.DropTable(
                 name: "Drinks");
 
             migrationBuilder.DropTable(
-                name: "Accounts");
+                name: "Profiles");
 
             migrationBuilder.DropTable(
                 name: "Stages");
+
+            migrationBuilder.DropTable(
+                name: "Accounts");
         }
     }
 }

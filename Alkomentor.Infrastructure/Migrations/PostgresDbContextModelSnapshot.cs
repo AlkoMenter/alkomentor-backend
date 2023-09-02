@@ -83,7 +83,7 @@ namespace Alkomentor.Infrastructure.Migrations
                     b.Property<Guid?>("DrinkId")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("FactTime")
+                    b.Property<DateTime?>("FactTime")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("PlanTime")
@@ -131,16 +131,16 @@ namespace Alkomentor.Infrastructure.Migrations
                     b.Property<Guid?>("AccountId")
                         .HasColumnType("uuid");
 
-                    b.Property<int>("Age")
+                    b.Property<int?>("Age")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Gender")
-                        .HasColumnType("integer");
+                    b.Property<bool?>("Gender")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.Property<double>("Weight")
+                    b.Property<double?>("Weight")
                         .HasColumnType("double precision");
 
                     b.HasKey("Id");
