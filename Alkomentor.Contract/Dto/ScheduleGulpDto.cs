@@ -1,6 +1,6 @@
-﻿namespace Alkomentor.Application.Models;
+﻿namespace Alkomentor.Contract.Dto;
 
-public class ScheduledGulp
+public class ScheduleGulpDto
 {
     public double Size { get; set; }
 
