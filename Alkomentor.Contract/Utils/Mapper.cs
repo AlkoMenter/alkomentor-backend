@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Alkomentor.Api.Utils;
+namespace Alkomentor.Contract.Utils;
 public static class Mapper
 {
     public static To? Map<TFrom, To>(TFrom from)

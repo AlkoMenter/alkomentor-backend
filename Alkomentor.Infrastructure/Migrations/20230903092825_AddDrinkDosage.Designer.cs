@@ -3,6 +3,7 @@ using System;
 using Alkomentor.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Alkomentor.Infrastructure.Migrations
 {
     [DbContext(typeof(PostgresDbContext))]
-    partial class PostgresDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230903092825_AddDrinkDosage")]
+    partial class AddDrinkDosage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,6 +36,9 @@ namespace Alkomentor.Infrastructure.Migrations
 
                     b.Property<string>("Login")
                         .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("NotifyToken")
                         .HasColumnType("text");
 
                     b.Property<string>("Password")
@@ -162,9 +168,6 @@ namespace Alkomentor.Infrastructure.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.Property<string>("NotifyToken")
                         .HasColumnType("text");
 
                     b.Property<double?>("Weight")
