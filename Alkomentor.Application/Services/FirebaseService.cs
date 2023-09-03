@@ -12,13 +12,11 @@ public class FirebaseService : IFirebaseService
 {
     private readonly FirebaseMessaging messaging;
     private readonly IProfileService _profileService;
-    private readonly IBoozeRepository _boozeRepository;
     private IMemoryCache _scheduleDrinksCache;
-    public FirebaseService(IProfileService profileService, IMemoryCache scheduleDrinksCache, IBoozeRepository boozeRepository)
+    public FirebaseService(IProfileService profileService, IMemoryCache scheduleDrinksCache)
     {
         _profileService = profileService;
         _scheduleDrinksCache = scheduleDrinksCache;
-        _boozeRepository = boozeRepository;
         var app = FirebaseApp.Create(new AppOptions()
         {
             Credential = GoogleCredential.FromFile("secret-key.json")
