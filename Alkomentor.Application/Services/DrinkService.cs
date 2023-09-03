@@ -15,4 +15,7 @@ internal class DrinkService : IDrinkService
 
     public async Task<Drink> CreateDrink(string name, double alcoholPerGram, double? degree)
         => await _drinkRepository.CreateDrink(name, alcoholPerGram, degree);
+
+    public async Task<List<Drink>> GetDrinks() 
+        => await _drinkRepository.GetDrinks();
 }

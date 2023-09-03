@@ -1,5 +1,6 @@
 ﻿using Alkomentor.Domain.Booze;
 using Alkomentor.Infrastructure.RepositoryInterfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Alkomentor.Infrastructure.Repositories;
 
@@ -24,5 +25,10 @@ internal class DrinkRepository : IDrinkRepository
         await _context.SaveChangesAsync();
 
         return drink.Entity;
+    }
+
+    public async Task<List<Drink>> GetDrinks()
+    {
+        return await _context.Drinks.ToListAsync();
     }
 }
