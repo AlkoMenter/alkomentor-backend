@@ -26,4 +26,12 @@ public class DrinkController: ControllerBase
 
         return Ok(Mapper.Map<Drink, DrinkDto>(drink));
     }
+
+    [HttpGet("getAllDrinks")]
+    public async Task<ActionResult<List<DrinkDto>>> GetDrinks()
+    {
+        var drink = await _drinkService.GetDrinks();
+
+        return Ok(Mapper.Map<List<Drink>, List<DrinkDto>>(drink));
+    }
 }

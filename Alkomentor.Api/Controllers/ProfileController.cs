@@ -26,13 +26,21 @@ public class ProfileController : ControllerBase
     {
         var profileInfo = await _profileService.GetProfile(userId);
 
-        return profileInfo is not null ? Ok(Mapper.Map<Profile, ProfileDto>(profileInfo)) : NotFound();
+        return Ok(Mapper.Map<Profile, ProfileDto>(profileInfo));
     }
 
     [HttpPost("editProfile")]
     public async Task<ActionResult> EditProfile([FromBody]EditProfileRequest request)
     {
-        await _profileService.EditProfile(request);
+        await _profileService.EditProfile(Mapper.Map<EditProfileRequest, EditProfileDto>(request)!);
+
+        return Ok();
+    }
+
+    [HttpPost("updateNotifyToken")]
+    public async Task<ActionResult> UpdateNotifyToken([FromBody]UpdateNotifyTokenRequest request)
+    {
+        await _profileService.UpdateNotifyToken(request.ProfileId, request.NotifyToken);
 
         return Ok();
     }

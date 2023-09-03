@@ -13,5 +13,7 @@ public class Profile
     // false - male, true - female
     public bool? Gender { get; set; }
 
+    public string? NotifyToken { get; set; } = "";
+
     public Account? Account { get; set; }
 }

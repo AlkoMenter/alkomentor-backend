@@ -1,5 +1,4 @@
 using Alkomentor.Api.Utils;
-using Alkomentor.Application;
 using Alkomentor.Application.ServiceInterfaces;
 using Alkomentor.Contract.Dto;
 using Alkomentor.Contract.Requests;
@@ -23,16 +22,19 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<AccountDto>> Login([FromBody] LoginRequest request)
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ProfileDto))]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    public async Task<ActionResult<ProfileDto>> Login([FromBody] LoginRequest request)
     {
-        var account = await _accountService.CheckAuthorization(request.Login, request.Password);
+        var profile = await _accountService.CheckAuthorization(request.Login, request.Password);
 
-        if (account is null) return Unauthorized();
+        if (profile is null) return Unauthorized();
 
-        return Ok(Mapper.Map<Account, AccountDto>(account));
+        return Ok(Mapper.Map<Profile, ProfileDto>(profile));
     }
 
     [HttpPost("registration")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ProfileDto))]
     public async Task<IActionResult> Registration([FromBody] RegistrationRequest request)
     {
         var account = await _accountService.RegisterAccount(request.Login, request.Password);
@@ -40,6 +42,6 @@ public class AuthController : ControllerBase
         var profile =
             await _profileService.CreateProfile(request.Name, request.Age, request.Weight, request.Gender, account);
 
-        return Ok();
+        return Ok(Mapper.Map<Profile, ProfileDto>(profile));
     }
 }
