@@ -28,5 +28,5 @@ internal class StageRepository : IStageRepository
     }
 
     public async Task<List<Stage>> GetStages()
-        => await _context.Stages.ToListAsync();
+        => await _context.Stages.OrderBy(x => x.MinProMille).ToListAsync();
 }
