@@ -18,9 +18,9 @@ internal class ProfileService : IProfileService
     public async Task<Profile> CreateProfile(string? name, int? age, double? weight, bool? gender, Account account)
         => await _profileRepository.CreateProfile(name, age, weight, gender, account);
 
-    public async Task<Profile> GetProfile(Guid userId)
+    public async Task<Profile> GetProfile(Guid profileId)
     {
-        return await _profileRepository.GetProfileById(userId);
+        return await _profileRepository.GetProfileById(profileId);
     }
 
     public async Task EditProfile(EditProfileDto newProfile)

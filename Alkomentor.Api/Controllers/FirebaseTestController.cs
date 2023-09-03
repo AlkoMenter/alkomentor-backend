@@ -1,4 +1,5 @@
 using Alkomentor.Application.ServiceInterfaces;
+using Hangfire;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Alkomentor.Api.Controllers;
@@ -20,6 +21,19 @@ public class FirebaseTestController : ControllerBase
         await _firebaseService.SendNotification(token, title, body);
         
         return Ok();
+    }
+    
+    [HttpGet("send2")]
+    public async Task<ActionResult> SendHang()
+    {
+        var res = BackgroundJob.Schedule(() => Console.WriteLine("test"), new TimeSpan(0, 0, 0, 30));
+        
+        return Ok(res);
+    }
+    [HttpGet("send3")]
+    public async Task<ActionResult> SendHang(string token)
+    {
+        return Ok(BackgroundJob.Delete(token));
     }
     
 }

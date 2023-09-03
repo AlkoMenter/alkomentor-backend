@@ -7,7 +7,7 @@ public interface IProfileService
 {
     Task<Profile> CreateProfile(string? name, int? age, double? weight, bool? gender, Account account);
 
-    Task<Profile> GetProfile(Guid userId);
+    Task<Profile> GetProfile(Guid profileId);
 
     Task EditProfile(EditProfileDto newProfile);
 

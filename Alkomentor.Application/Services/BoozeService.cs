@@ -4,6 +4,7 @@ using Alkomentor.Contract.Dto;
 using Alkomentor.Contract.Utils;
 using Alkomentor.Domain.Booze;
 using Alkomentor.Infrastructure.RepositoryInterfaces;
+using Hangfire;
 
 namespace Alkomentor.Application.Services;
 
