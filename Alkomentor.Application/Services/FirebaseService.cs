@@ -12,7 +12,7 @@ public class FirebaseService : IFirebaseService
 {
     private readonly FirebaseMessaging messaging;
     private readonly IProfileService _profileService;
-    private IMemoryCache _scheduleDrinksCache;
+    private readonly IMemoryCache _scheduleDrinksCache;
     public FirebaseService(IProfileService profileService, IMemoryCache scheduleDrinksCache)
     {
         _profileService = profileService;

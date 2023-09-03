@@ -7,17 +7,12 @@ using Hangfire;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddInfrastructure(builder.Configuration)
-                .AddApplication();
+    .AddMemoryCache()
+    .AddApplication();
 
 builder.Services
-    .AddControllers(opts =>
-        {
-            opts.Filters.Add(typeof(ModelStateFilter));
-        })
-    .AddJsonOptions(options =>
-        {
-            options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-        });
+    .AddControllers(opts => { opts.Filters.Add(typeof(ModelStateFilter)); })
+    .AddJsonOptions(options => { options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles; });
 
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors();
