@@ -1,7 +1,10 @@
-﻿namespace Alkomentor.Contract.Requests;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Alkomentor.Contract.Requests;
 
 public class CreateBoozeRequest
 {
+    [Required]
     public Guid ProfileId { get; set; }
 
     public DateTime StartTime { get; set; }

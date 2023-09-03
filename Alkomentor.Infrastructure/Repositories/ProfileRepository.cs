@@ -1,4 +1,5 @@
-﻿using Alkomentor.Contract.Requests;
+﻿using Alkomentor.Contract.Dto;
+using Alkomentor.Contract.Requests;
 using Alkomentor.Domain;
 using Alkomentor.Infrastructure.RepositoryInterfaces;
 using Microsoft.EntityFrameworkCore;
@@ -33,29 +34,48 @@ internal class ProfileRepository : IProfileRepository
         return profile.Entity;
     }
 
-    public async Task<Profile?> GetProfile(Guid userId)
+    public async Task<Profile> GetProfileById(Guid profileId)
     {
-        var user = await _context.Profiles.FirstOrDefaultAsync(x => x.Id == userId);
-
-        return user;
+        var profile = await _context.Profiles.FirstOrDefaultAsync(x => x.Id == profileId);
+        if (profile is null)
+            throw new KeyNotFoundException();
+        
+        return profile;
     }
 
-    public async Task EditProfile(EditProfileRequest request)
+    public async Task<Profile> GetProfileByAccountId(Guid accountId)
     {
-        var profile = await _context.Profiles.FirstOrDefaultAsync(x => x.Account.Id == request.AccountId);
-
-        if (profile == null) 
-            throw new KeyNotFoundException("User not found");
-
-        await UpdateProfileAsync(profile, request);
+        var profile = await _context.Profiles.FirstOrDefaultAsync(x => x.Account.Id == accountId);
+        if (profile is null)
+            throw new KeyNotFoundException();
+        
+        return profile;
     }
 
-    private async Task UpdateProfileAsync(Profile profile, EditProfileRequest request)
+    public async Task EditProfile(EditProfileDto newProfile)
     {
-        profile.Name = request.Name;
-        profile.Age = request.Age;
-        profile.Weight = request.Weight;
-        profile.Gender = request.Gender;
+        var profile = await GetProfileById(newProfile.Id);
+
+        await UpdateProfileAsync(profile, newProfile);
+    }
+
+    public async Task UpdateTokenNotify(Guid profileId, string token)
+    {
+        var profile = await GetProfileById(profileId);
+        profile.NotifyToken = token;
+        
+        _context.Profiles.Update(profile);
+        await _context.SaveChangesAsync();
+    }
+
+    private async Task UpdateProfileAsync(Profile profile, EditProfileDto newProfile)
+    {
+        profile.Name = newProfile.Name;
+        profile.Age = newProfile.Age;
+        profile.Weight = newProfile.Weight;
+        profile.Gender = newProfile.Gender;
+        if (!string.IsNullOrEmpty(newProfile.NotifyToken))
+            profile.NotifyToken = newProfile.NotifyToken;
         
         _context.Profiles.Update(profile);
         await _context.SaveChangesAsync();

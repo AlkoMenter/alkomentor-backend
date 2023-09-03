@@ -1,4 +1,5 @@
 ﻿using Alkomentor.Application.ServiceInterfaces;
+using Alkomentor.Contract.Dto;
 using Alkomentor.Contract.Requests;
 using Alkomentor.Domain;
 using Alkomentor.Infrastructure.RepositoryInterfaces;
@@ -17,13 +18,18 @@ internal class ProfileService : IProfileService
     public async Task<Profile> CreateProfile(string? name, int? age, double? weight, bool? gender, Account account)
         => await _profileRepository.CreateProfile(name, age, weight, gender, account);
 
-    public async Task<Profile?> GetProfile(Guid userId)
+    public async Task<Profile> GetProfile(Guid userId)
     {
-        return await _profileRepository.GetProfile(userId);
+        return await _profileRepository.GetProfileById(userId);
     }
 
-    public async Task EditProfile(EditProfileRequest request)
+    public async Task EditProfile(EditProfileDto newProfile)
     {
-        await _profileRepository.EditProfile(request);
+        await _profileRepository.EditProfile(newProfile);
+    }
+
+    public async Task UpdateNotifyToken(Guid profileId, string token)
+    {
+        await _profileRepository.UpdateTokenNotify(profileId, token);
     }
 }

@@ -9,6 +9,4 @@ public class Account
     public required string Password { get; set; }
 
     public required DateTime CreateDate { get; set; }
-
-    public string? NotifyToken { get; set; } = "";
 }
