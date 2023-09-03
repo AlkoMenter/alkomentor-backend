@@ -1,5 +1,6 @@
 ﻿using Alkomentor.Domain.Booze;
 using Alkomentor.Infrastructure.RepositoryInterfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Alkomentor.Infrastructure.Repositories;
 
@@ -25,4 +26,7 @@ internal class StageRepository : IStageRepository
 
         return stage.Entity;
     }
+
+    public async Task<List<Stage>> GetStages()
+        => await _context.Stages.ToListAsync();
 }

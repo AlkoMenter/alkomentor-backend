@@ -15,4 +15,7 @@ internal class StageService : IStageService
 
     public async Task<Stage> CreateStage(string name, double minProMille, double maxProMille)
         => await _stageRepository.CreateStage(name, minProMille, maxProMille);
+
+    public async Task<List<Stage>> GetStages()
+        => await _stageRepository.GetStages();
 }

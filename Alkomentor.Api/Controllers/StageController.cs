@@ -25,4 +25,12 @@ public class StageController: ControllerBase
         var stage = await _stageService.CreateStage(request.Name, request.MinProMille, request.MaxProMille);
         return Ok(Mapper.Map<Stage, StageDto>(stage));
     }
+
+    [HttpGet("getAllStages")]
+    public async Task<ActionResult<List<StageDto>>> GetDrinks()
+    {
+        var drink = await _stageService.GetStages();
+
+        return Ok(Mapper.Map<List<Stage>, List<StageDto>>(drink));
+    }
 }
