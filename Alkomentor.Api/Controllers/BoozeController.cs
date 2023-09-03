@@ -1,7 +1,9 @@
 using Alkomentor.Api.Utils;
+using Alkomentor.Application.Models;
 using Alkomentor.Application.ServiceInterfaces;
 using Alkomentor.Contract.Dto;
 using Alkomentor.Contract.Requests;
+using Alkomentor.Contract.Utils;
 using Alkomentor.Domain.Booze;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,6 +33,12 @@ public class BoozeController : ControllerBase
             request.StageId, request.CurrentProMille, request.SelectedDrinkIds);
         
         return Ok(Mapper.Map<Booze, BoozeDto>(booze));
+    }
+
+    [HttpGet("calculateBoozeSchedule")]
+    public async Task<ActionResult<BoozeSchedule>> CalculateBoozeSchedule(Guid boozeId)
+    {
+        return Ok(await _boozeService.CalculateBoozeSchedule(boozeId));
     }
     
     // [HttpGet("historyBoozes")]

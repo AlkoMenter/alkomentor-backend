@@ -40,4 +40,13 @@ internal class BoozeRepository : IBoozeRepository
 
         return booze.Entity;
     }
+
+    public async Task<Booze?> GetBooze(Guid boozeId)
+        => await _context.Boozes
+            .AsNoTracking()
+            .Include(x => x.Gulps)
+            .Include(x => x.SelectedDrinks)
+            .Include(x => x.Stage)
+            .Include(x => x.Profile)
+            .FirstOrDefaultAsync(x => x.Id == boozeId);
 }
