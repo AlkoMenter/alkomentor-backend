@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Hangfire.NetCore" Version="1.8.5" />
+    <PackageReference Include="Hangfire.PostgreSql" Version="1.20.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
