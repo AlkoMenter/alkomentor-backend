@@ -17,4 +17,6 @@ public class BoozeDto
     public ICollection<GulpDto>? Gulps { get; set; }
 
     public ICollection<DrinkDto>? SelectedDrinks { get; set; }
+    
+    public BoozeScheduleDto? Schedule { get; set; }
 }

@@ -30,8 +30,8 @@ internal class BoozeRepository : IBoozeRepository
             {
                 Profile = profile,
                 SelectedDrinks = selectedDrinks,
-                StartTime = startTime,
-                StopTime = stopTime,
+                StartTime = startTime.ToUniversalTime(),
+                StopTime = stopTime?.ToUniversalTime(),
                 Stage = stage,
                 CurrentProMille = currentProMille
             });
@@ -42,11 +42,54 @@ internal class BoozeRepository : IBoozeRepository
     }
 
     public async Task<Booze?> GetBooze(Guid boozeId)
-        => await _context.Boozes
+    {
+        var booze = await _context.Boozes
             .AsNoTracking()
             .Include(x => x.Gulps)
             .Include(x => x.SelectedDrinks)
             .Include(x => x.Stage)
             .Include(x => x.Profile)
             .FirstOrDefaultAsync(x => x.Id == boozeId);
+        
+        if (booze?.CurrentProMilleUpdated is not null)
+        {
+            var hours = (DateTime.Now.ToUniversalTime() - booze!.CurrentProMilleUpdated).Value.TotalHours;
+
+            booze.CurrentProMille = hours * 0.15 > booze.CurrentProMille ? 0 : booze.CurrentProMille - hours * 0.15;
+        }
+
+        return booze;
+    }
+
+    public async Task SetCurrentProMille(Guid boozeId, double proMille)
+    {
+        var booze = await _context.Boozes.FirstOrDefaultAsync(x => x.Id == boozeId);
+        
+        if (booze is null) return;
+        
+        booze.CurrentProMille = proMille;
+        booze.CurrentProMilleUpdated = DateTime.Now.ToUniversalTime();
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task<Gulp?> CreateGulp(Guid boozeId, double Size, Guid drinkId, DateTime gulpTime)
+    {
+        var booze = await _context.Boozes.FirstOrDefaultAsync(x => x.Id == boozeId);
+
+        var drink = await _context.Drinks.FirstOrDefaultAsync(x => x.Id == drinkId);
+
+        if (booze is null || drink is null) return null;
+
+        var gulp = _context.Gulps.Add(new Gulp
+        {
+            Booze = booze,
+            Drink = drink,
+            Size = Size,
+            GulpTime = gulpTime.ToUniversalTime()
+        });
+
+        await _context.SaveChangesAsync();
+
+        return gulp.Entity;
+    }
 }

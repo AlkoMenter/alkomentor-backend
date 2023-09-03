@@ -1,5 +1,3 @@
-using Alkomentor.Api.Utils;
-using Alkomentor.Application.Models;
 using Alkomentor.Application.ServiceInterfaces;
 using Alkomentor.Contract.Dto;
 using Alkomentor.Contract.Requests;
@@ -20,12 +18,6 @@ public class BoozeController : ControllerBase
         _boozeService = boozeService;
     }
 
-    // [HttpGet("getActiveBooze")]
-    // public ActionResult<BoozeDto> GetActiveBooze()
-    // {
-    //     return Ok();
-    // }
-    
     [HttpPost("createBooze")]
     public async Task<ActionResult<BoozeDto>> CreateBooze([FromBody] CreateBoozeRequest request)
     {
@@ -35,33 +27,15 @@ public class BoozeController : ControllerBase
         return Ok(Mapper.Map<Booze, BoozeDto>(booze));
     }
 
-    [HttpGet("calculateBoozeSchedule")]
-    public async Task<ActionResult<BoozeSchedule>> CalculateBoozeSchedule(Guid boozeId)
+    [HttpGet("getBooze")]
+    public async Task<ActionResult<BoozeDto>> GetBooze(Guid boozeId)
     {
-        return Ok(await _boozeService.CalculateBoozeSchedule(boozeId));
+        return Ok(await _boozeService.GetBooze(boozeId));
     }
-    
-    // [HttpGet("historyBoozes")]
-    // public ActionResult HistoryBoozes()
-    // {
-    //     return Ok();
-    // }
-    //
-    // [HttpGet("getBooze")]
-    // public ActionResult GetBooze(int idBooze)
-    // {
-    //     return Ok();
-    // }
-    //
-    // [HttpGet("getNextDrink")]
-    // public ActionResult GetNextDrink()
-    // {
-    //     return Ok();
-    // }
-    //
-    // [HttpPost("addDrink")]
-    // public ActionResult AddDrink(int alcType, int volumeDrink)
-    // {
-    //     return Ok();
-    // }
+
+    [HttpPost("drink")]
+    public async Task<ActionResult<BoozeDto>> Drink([FromBody]BoozeDrinkRequest request)
+    {
+        return Ok(await _boozeService.Drink(request.BoozeId, request.DrinkId));
+    }
 }

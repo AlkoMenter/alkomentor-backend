@@ -13,6 +13,8 @@ public class Booze
     public Stage? Stage { get; set; }
 
     public double CurrentProMille { get; set; }
+    
+    public DateTime? CurrentProMilleUpdated { get; set; }
 
     public ICollection<Gulp>? Gulps { get; set; }
 
