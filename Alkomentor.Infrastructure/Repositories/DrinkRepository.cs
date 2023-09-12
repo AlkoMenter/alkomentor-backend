@@ -13,13 +13,14 @@ internal class DrinkRepository : IDrinkRepository
         _context = context;
     }
 
-    public async Task<Drink> CreateDrink(string name, double alcoholPerGram, double? degree)
+    public async Task<Drink> CreateDrink(string name, double alcoholPerGram, double? degree, double dosage)
     {
         var drink = _context.Drinks.Add(new Drink 
             {
                 Name = name,
                 AlcoholPerGram = alcoholPerGram,
-                Degree = degree
+                Degree = degree,
+                Dosage = dosage 
             });
 
         await _context.SaveChangesAsync();
