@@ -22,7 +22,7 @@ public class DrinkController: ControllerBase
     [HttpPost("createDrink")]
     public async Task<ActionResult<DrinkDto>> CreateDrink([FromBody] CreateDrinkRequest request)
     {
-        var drink = await _drinkService.CreateDrink(request.Name, request.AlcoholPerGram, request.Degree);
+        var drink = await _drinkService.CreateDrink(request.Name, request.AlcoholPerGram, request.Degree, request.Dosage);
 
         return Ok(Mapper.Map<Drink, DrinkDto>(drink));
     }
